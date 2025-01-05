@@ -1,4 +1,4 @@
-name: 'Terraform SCA'
+name: 'Terraform Security'
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ on:
         type: string
 
 jobs:
-  scan:
+  sca-scan:
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
