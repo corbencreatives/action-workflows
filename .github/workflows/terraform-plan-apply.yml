@@ -3,6 +3,10 @@ name: 'Terraform plan and apply'
 on:
   workflow_call:
     inputs:
+      # test, acceptance or production
+      environment:
+        required: true
+        type: string
       tf-workspace:
         required: true
         type: string
@@ -71,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    environment: test
+    environment: ${{ input.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
