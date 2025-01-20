@@ -38,15 +38,15 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: plan-upload
         with:
-          workspace: ${{ input.tf-workspace }}
-          directory: ${{ input.config-directory }}
+          workspace: ${{ inputs.tf-workspace }}
+          directory: ${{ inputs.config-directory }}
           speculative: true
 
       - name: Create Plan Run
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: plan-run
         with:
-          workspace: ${{ input.tf-workspace }}
+          workspace: ${{ inputs.tf-workspace }}
           configuration_version: ${{ steps.plan-upload.outputs.configuration_version_id }}
           plan_only: true
 
@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    environment: ${{ input.environment }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -84,14 +84,14 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: apply-upload
         with:
-          workspace: ${{ input.tf-workspace }}
-          directory: ${{ input.config-directory }}
+          workspace: ${{ inputs.tf-workspace }}
+          directory: ${{ inputs.config-directory }}
 
       - name: Create Apply Run
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: apply-run
         with:
-          workspace: ${{ input.tf-workspace }}
+          workspace: ${{ inputs.tf-workspace }}
           configuration_version: ${{ steps.apply-upload.outputs.configuration_version_id }}
 
       - name: Apply
