@@ -15,7 +15,7 @@ on:
         type: string
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
-  TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
+  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
   TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
   TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
   TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_QUOTED }}
