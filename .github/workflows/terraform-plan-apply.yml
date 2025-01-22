@@ -39,6 +39,9 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - name: Set up environment variables
+        run: echo "TF_VAR_docker_password=${{ secrets.TF_VAR_docker_password }}" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -87,6 +90,9 @@ jobs:
       contents: read
     environment: ${{ inputs.environment }}
     steps:
+      - name: Set up environment variables
+        run: echo "TF_VAR_docker_password=${{ secrets.TF_VAR_docker_password }}" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
