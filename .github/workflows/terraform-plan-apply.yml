@@ -16,8 +16,6 @@ on:
     secrets:
       token:
         required: true
-      docker_password:
-        required: true
       TF_VAR_ARM_CLIENT_ID:
         required: true
       TF_VAR_ARM_CLIENT_SECRET:
@@ -41,10 +39,6 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - run: echo ${{ secrets.docker_password }}
-
-      - run: echo ${{ secrets.TF_VAR_docker_password }}
-
       - name: Checkout
         uses: actions/checkout@v4
 
