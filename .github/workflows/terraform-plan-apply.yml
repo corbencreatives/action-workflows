@@ -3,9 +3,6 @@ name: 'Terraform plan and apply'
 on:
   workflow_call:
     inputs:
-      token:
-        required: true
-        type: string
       # test, acceptance or production
       environment:
         required: true
@@ -16,6 +13,10 @@ on:
       config-directory:
         required: true
         type: string
+    secrets:
+      token:
+        required: true
+
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
   TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
@@ -40,7 +41,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: plan-upload
         with:
-          token: ${{inputs.token}}
+          token: ${{secrets.token}}
           workspace: ${{ inputs.tf-workspace }}
           directory: ${{ inputs.config-directory }}
           speculative: true
