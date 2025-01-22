@@ -18,13 +18,19 @@ on:
         required: true
       TF_VAR_ARM_CLIENT_ID:
         required: true
+      TF_VAR_ARM_CLIENT_SECRET:
+        required: true
+      TF_VAR_ARM_SUBSCRIPTION_ID:
+        required: true
+      TF_VAR_ARM_TENANT_ID:
+        required: true
 
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
-  TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
-  TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
+#  TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
+#  TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
 #  TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_QUOTED }}
-  TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_QUOTED }}
+#  TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_QUOTED }}
   TF_VAR_docker_password: ${{ secrets.REGISTRY_TOKEN_QUOTED }}
 
 jobs:
