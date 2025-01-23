@@ -43,9 +43,6 @@ jobs:
 #      TF_VAR_ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
 
     steps:
-      - name: List Available Secrets
-        run: env | grep SECRET
-
       - name: Set up environment variables
         run: |
           echo "TF_VAR_ARM_ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}" >> $GITHUB_ENV
