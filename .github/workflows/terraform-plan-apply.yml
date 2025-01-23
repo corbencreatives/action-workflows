@@ -24,8 +24,6 @@ on:
       ARM_TENANT_ID:
         required: true
 
-
-
 jobs:
   terraform-plan:
     name: "Terraform Plan"
@@ -36,21 +34,24 @@ jobs:
       pull-requests: write
 
     # Add env variables for service principal
-    env:
-      TF_CLOUD_ORGANIZATION: "corbencreatives"
-      TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD_QUOTED}}
-      TF_VAR_ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
-      TF_VAR_ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
-      TF_VAR_ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
-      TF_VAR_ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+#    env:
+#      TF_CLOUD_ORGANIZATION: "corbencreatives"
+#      TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD_QUOTED}}
+#      TF_VAR_ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+#      TF_VAR_ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+#      TF_VAR_ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+#      TF_VAR_ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
 
     steps:
-#      - name: Set up environment variables
-#        run: |
-#          echo "ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}" >> $GITHUB_ENV
-#          echo "ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}" >> $GITHUB_ENV
-#          echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
-#          echo "ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
+      - name: List Available Secrets
+        run: env | grep SECRET
+
+      - name: Set up environment variables
+        run: |
+          echo "TF_VAR_ARM_ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "TF_VAR_ARM_ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}" >> $GITHUB_ENV
+          echo "TF_VAR_ARM_ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
+          echo "TF_VAR_ARM_ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v4
