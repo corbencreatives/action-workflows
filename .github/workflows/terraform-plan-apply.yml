@@ -40,7 +40,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Pass Environment Variable
-        run: echo "TF_VAR_docker_password=${{ secrets.DOCKER_PASSWORD }}" >> $GITHUB_ENV
+        run: echo "TF_VAR_docker_password='${{ secrets.DOCKER_PASSWORD }}'" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: env | grep TF_VAR
