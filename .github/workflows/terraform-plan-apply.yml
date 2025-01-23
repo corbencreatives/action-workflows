@@ -24,12 +24,12 @@ on:
         required: true
       TF_VAR_ARM_TENANT_ID:
         required: true
-#      DOCKER_PASSWORD:
-#        required: true
+      DOCKER_PASSWORD:
+        required: true
 
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
-  TF_VAR_docker_password: ${{secrets.REGISTRY_TOKEN}}
+  TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD}}
 
 jobs:
   terraform-plan:
