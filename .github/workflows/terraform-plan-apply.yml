@@ -16,13 +16,13 @@ on:
     secrets:
       token:
         required: true
-      ARM_CLIENT_ID:
+      ARM_CLIENT_ID_QUOTED:
         required: true
-      ARM_CLIENT_SECRET:
+      ARM_CLIENT_SECRET_QUOTED:
         required: true
-      ARM_SUBSCRIPTION_ID:
+      ARM_SUBSCRIPTION_ID_QUOTED:
         required: true
-      ARM_TENANT_ID:
+      ARM_TENANT_ID_QUOTED:
         required: true
       DOCKER_PASSWORD:
         required: true
