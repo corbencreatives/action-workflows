@@ -24,7 +24,7 @@ on:
         required: true
       TF_VAR_ARM_TENANT_ID:
         required: true
-      TF_VAR_docker_password:
+      DOCKER_PASSWORD:
         required: true
 
 env:
@@ -40,7 +40,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Set up environment variables
-        run: echo "TF_VAR_docker_password=`echo ${{ secrets.TF_VAR_docker_password }}`" >> $GITHUB_ENV
+        run: echo "TF_VAR_docker_password=`echo ${{ secrets.DOCKER_PASSWORD }}`" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -90,9 +90,6 @@ jobs:
       contents: read
     environment: ${{ inputs.environment }}
     steps:
-      - name: Set up environment variables
-        run: echo "TF_VAR_docker_password=`echo ${{ secrets.TF_VAR_docker_password }}`" >> $GITHUB_ENV
-
       - name: Checkout
         uses: actions/checkout@v4
 
