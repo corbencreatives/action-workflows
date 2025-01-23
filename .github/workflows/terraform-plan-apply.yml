@@ -13,6 +13,16 @@ on:
       config-directory:
         required: true
         type: string
+    secrets:
+      # Declare secrets used by this workflow
+      TF_VAR_ARM_CLIENT_ID:
+        required: true
+      TF_VAR_ARM_CLIENT_SECRET:
+        required: true
+      TF_VAR_ARM_SUBSCRIPTION_ID:
+        required: true
+      TF_VAR_ARM_TENANT_ID:
+        required: true
 
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
@@ -28,11 +38,11 @@ jobs:
       pull-requests: write
 
     # Add env variables for service principal
-    env:
-      TF_VAR_ARM_CLIENT_ID: ${{ secrets.TF_VAR_ARM_CLIENT_ID }}
-      TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.TF_VAR_ARM_CLIENT_SECRET }}
-      TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.TF_VAR_ARM_SUBSCRIPTION_ID }}
-      TF_VAR_ARM_TENANT_ID: ${{ secrets.TF_VAR_ARM_TENANT_ID }}
+#    env:
+#      TF_VAR_ARM_CLIENT_ID: ${{ secrets.TF_VAR_ARM_CLIENT_ID }}
+#      TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.TF_VAR_ARM_CLIENT_SECRET }}
+#      TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.TF_VAR_ARM_SUBSCRIPTION_ID }}
+#      TF_VAR_ARM_TENANT_ID: ${{ secrets.TF_VAR_ARM_TENANT_ID }}
 
     steps:
 #      - name: Set up environment variables
