@@ -51,7 +51,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: plan-upload
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           workspace: ${{ inputs.tf-workspace }}
           directory: ${{ inputs.config-directory }}
           speculative: true
@@ -60,7 +60,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: plan-run
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           workspace: ${{ inputs.tf-workspace }}
           configuration_version: ${{ steps.plan-upload.outputs.configuration_version_id }}
           plan_only: true
@@ -69,7 +69,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.3.2
         id: plan-output
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           plan: ${{ steps.plan-run.outputs.plan_id }}
 
       - name: Create Plan Output
@@ -99,7 +99,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: apply-upload
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           workspace: ${{ inputs.tf-workspace }}
           directory: ${{ inputs.config-directory }}
 
@@ -107,7 +107,7 @@ jobs:
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: apply-run
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           workspace: ${{ inputs.tf-workspace }}
           configuration_version: ${{ steps.apply-upload.outputs.configuration_version_id }}
 
@@ -116,7 +116,7 @@ jobs:
         if: fromJSON(steps.apply-run.outputs.payload).data.attributes.actions.IsConfirmable
         id: apply
         with:
-          token: ${{ secrets.token }}
+          token: ${{ secrets.TF_API_TOKEN }}
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
 
