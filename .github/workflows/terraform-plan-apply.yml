@@ -29,7 +29,7 @@ on:
 
 env:
   TF_CLOUD_ORGANIZATION: "corbencreatives"
-  TF_VAR_docker_password: '${{secrets.REGISTRY_TOKEN_QUOTED}}'
+  TF_VAR_docker_password: ${{secrets.REGISTRY_TOKEN}}
 
 jobs:
   terraform-plan:
