@@ -40,15 +40,15 @@ jobs:
     # Add static env variables for service principal
     env:
       TF_CLOUD_ORGANIZATION: "corbencreatives"
-      TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_QUOTED }}
+      TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_QUOTED }}
+      TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
+      TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
       TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD}}
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_QUOTED }}
+      CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_QUOTED }}
+      TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
+      SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
       docker_password: ${{secrets.DOCKER_PASSWORD}}
 
     steps:
