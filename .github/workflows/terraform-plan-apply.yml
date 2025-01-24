@@ -44,7 +44,7 @@ jobs:
           TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
           TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+          TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
         run: echo "Environment variables set for Terraform"
 
       - name: Checkout Code
