@@ -14,13 +14,15 @@ on:
         required: true
         type: string
     secrets:
-      ARM_CLIENT_ID:
+      DEBUG_SECRET:
         required: true
-      ARM_CLIENT_SECRET:
+      ARM_CLIENT_ID_QUOTED:
         required: true
-      ARM_SUBSCRIPTION_ID:
+      ARM_CLIENT_SECRET_QUOTED:
         required: true
-      ARM_TENANT_ID:
+      ARM_SUBSCRIPTION_ID_QUOTED:
+        required: true
+      ARM_TENANT_ID_QUOTED:
         required: true
 #      DOCKER_PASSWORD:
 #        required: true
@@ -40,12 +42,15 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Debug Secret
+        run: echo "DEBUG_SECRET is ${{ secrets.DEBUG_SECRET }}"
+
       - name: Set up Terraform Variables
         env:
-          TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_QUOTED }}
+          TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_QUOTED }}
+          TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID_QUOTED }}
+          TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_QUOTED }}
         run: echo "Environment variables set for Terraform"
 
       - name: Checkout Code
