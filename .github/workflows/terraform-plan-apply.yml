@@ -13,15 +13,15 @@ on:
       config-directory:
         required: true
         type: string
-    secrets:
-      ARM_CLIENT_ID:
-        required: true
-      ARM_CLIENT_SECRET:
-        required: true
-      ARM_SUBSCRIPTION_ID:
-        required: true
-      ARM_TENANT_ID:
-        required: true
+#    secrets:
+#      ARM_CLIENT_ID:
+#        required: true
+#      ARM_CLIENT_SECRET:
+#        required: true
+#      ARM_SUBSCRIPTION_ID:
+#        required: true
+#      ARM_TENANT_ID:
+#        required: true
 #      DOCKER_PASSWORD:
 #        required: true
 
@@ -39,11 +39,11 @@ jobs:
 
     steps:
       - name: Set up Terraform Variables
-        env:
-          TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+#        env:
+#          TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+#          TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+#          TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+#          TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 #          TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
         run: echo "Environment variables set for Terraform"
 
