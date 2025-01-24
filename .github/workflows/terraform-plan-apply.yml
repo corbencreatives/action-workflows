@@ -27,6 +27,9 @@ on:
 #      DOCKER_PASSWORD_QUOTED:
 #        required: true
 
+env:
+  TF_CLOUD_ORGANIZATION: "corbencreatives"
+
 jobs:
   terraform-plan:
     name: "Terraform Plan"
@@ -39,7 +42,6 @@ jobs:
     steps:
       - name: Set up Terraform Variables
         env:
-          TF_CLOUD_ORGANIZATION: "corbencreatives"
           TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
           TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
