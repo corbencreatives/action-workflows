@@ -37,14 +37,9 @@ jobs:
       contents: read
       pull-requests: write
 
-    # Add env variables for service principal
+    # Add static env variables for service principal
     env:
       TF_CLOUD_ORGANIZATION: "corbencreatives"
-#      TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD}}
-#      TF_VAR_ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
-#      TF_VAR_ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
-#      TF_VAR_ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
-#      TF_VAR_ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
 
     steps:
       - name: Checkout Code
@@ -52,7 +47,7 @@ jobs:
 
       - name: Set Environment Variables from Secrets
         env:
-          TF_VAR_DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+          TF_VAR_docker_password: ${{secrets.DOCKER_PASSWORD}}
           TF_VAR_ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
           TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           TF_VAR_ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
